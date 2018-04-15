@@ -1,0 +1,157 @@
+<!DOCTYPE html><html>
+<head>
+  <title>Date</title>
+  <meta charset="UTF-8">
+  <style type="text/css">
+    
+            body{
+                padding: 10px;
+                background-color: black;
+                color: white;
+                font-size: 14px;
+                line-height: 1.4;
+                font-family: 'comics Sans', Georgia, serif;
+            }
+            ul 
+            {
+                list-style-position:inside;
+                padding-left:0px;
+            }
+            ul ul
+            {
+                list-style-position:inside;
+                padding-left:10px;
+            }
+            li{
+
+                line-height: 1.5;
+                width: 100%;
+            }
+
+            h1,h2,h3{
+                font-family: 'Tekton Pro', Georgia, serif;
+            }
+            h1{
+                font-size: 24px;
+                line-height: 30px;
+            }
+            h2{
+                font-size: 21px;
+                line-height: 27px;
+                margin-bottom: 25px;
+            }
+
+            #cabecera {
+                width:100%;
+                border: 2px solid black;
+                text-align: center;
+                border-radius:15px;
+                background-color: blue;
+                color: whitesmoke;
+                margin-bottom: 10px;
+            }
+            h3 {
+                font-size: 20px;
+                line-height: 26px;
+                margin-bottom: 10px;
+            }
+            
+            p {
+                font-size: 14px;
+                line-height: 18px;
+            }
+
+            footer {
+                margin-top: 15px;
+                clear: both;
+                text-align: center;
+            }
+
+
+            #tarea {
+                border: 2px solid black;
+                margin-bottom: 25px;
+                padding: 0px 10px;
+            }
+            .codigo {
+                font-family: Consolas, "courier new";
+                line-height: 1.4;
+                width: auto;
+                font-size: 14px;
+                background-color: blue;
+                padding: 5px 5px;
+
+                margin: 0 0 10px 0;
+            }
+  </style>
+</head>
+<body>
+  <header id="cabecera">
+  <h1 id="h1"></h1></header>
+  <h3>Practica realizada por Sebastian Vel&aacute;squez Rendon</h3>
+  <h2 id="h2">La fecha y la hora son:</h2>
+  <div id="fecha"></div>
+  <div>
+    <h3>incluye los siguientes elementos</h3>
+    <ul>
+      <li>El nombre de quien hace la entrega debajo de el titulo <strong>h1</strong> </li>
+      <li>Un bloque <strong>div</strong> debajo de la fecha y la hora y las instrucciones JavaScript necesarias para que muestre en dicho bloque el contenido de las siguientes propiedades DOM  en líneas separadas, que comiencen por el nombre de la propiedad(es) mostrada(s): </li>
+      <ul><li id="p1">
+        <p> Contenido de innerHTML de elemento identificado por id="h2"</p>
+      </li>
+      <li id="p2">
+        <p> Contenido de outerHTML de elemento identificado por id="h1"</p>
+      </li>
+      <li id="p3">
+        <p> Contenido de de la propiedad global: location.href</p>
+      </li>
+      <li id="p4">
+        <p> Contenido de de la propiedad global: location.</p>
+      </li>
+      <li id="p5">
+        <p> Contenido de de las propiedades globales: screen.width y screen.heigth</p>
+      </li>
+      </ul>
+    </ul>
+  </div>
+
+ <script type="text/javascript">
+
+            
+            function escapeHtml(text) {
+                'use strict';
+                return text.replace(/[\"&<>]/g, function (a) {
+                    return {'"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;'}[a];
+                });
+            }
+            var fecha = new Date();
+            var msj;
+            var h1 = document.getElementById("h1");
+            var h2 = document.getElementById("h2");
+
+            if (fecha.getHours() < 7) {
+                msj = "Buenas noches";
+            }
+            else if (fecha.getHours() < 12) {
+                msj = "Buenos días";
+            }
+            else if (fecha.getHours() < 21) {
+                msj = "Buenas tardes";
+            }
+            else {
+                msj = "Buenas noches";
+            }
+
+            msj += "<br> espero esten bien ";
+
+            document.getElementById("h1").innerHTML = msj;
+            document.getElementById("fecha").innerHTML = fecha;
+
+            document.getElementById("p1").innerHTML = document.getElementById("p1").innerHTML + "<br><div class=\"codigo\">document.getElementById(\"h2\").innerHTML = <b>[" + document.getElementById("h2").innerHTML + "] </b></div>";
+            document.getElementById("p2").innerHTML = document.getElementById("p2").innerHTML + "<br><div class=\"codigo\">escapeHtml(document.getElementById(\"h1\").outerHTML) = <b>[" + escapeHtml(document.getElementById("h1").outerHTML) + "] </b></div>";
+            document.getElementById("p3").innerHTML = document.getElementById("p3").innerHTML + "<br><div class=\"codigo\">location.href = <b>[" + location.href + "] </b></div>";
+            document.getElementById("p4").innerHTML = document.getElementById("p4").innerHTML + "<br><div class=\"codigo\">Object.getOwnPropertyNames(location) = <b>[" + Object.getOwnPropertyNames(location) + "]</b></div>";
+            document.getElementById("p5").innerHTML = document.getElementById("p5").innerHTML + "<br><div class=\"codigo\">screen.width = <b> [" + screen.width + "] </b>" + "screen.height=<b> [" + screen.height + "] </b></div>";
+</script>
+</body>
+</html>

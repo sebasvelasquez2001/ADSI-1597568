@@ -1,0 +1,338 @@
+<html>
+<head>
+	<title>Calculadora</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="codigojava.js"></script>
+	<script type="text/javascript">
+            $(function () {
+                // funcion de onClick de la caja
+                $("#num").on("click",
+                        function () {
+                            $("#num").val(""); // esto lo que hace es limpiar la caja de texto
+                        }
+                );
+
+                // asignamos a la variable num, el valor del objeto #num
+                var vnum = $("#num");
+                var vacu = 0, oper = "";
+
+                // funcion de onClick del boton con id cuadrado
+                $("#cuadrado").on("click",
+                        function () {
+                            vnum.val(vnum.val() * vnum.val()); // hacemos su cuadrado y se lo volvemos a asignar
+                            //num.val(3*3); asÃ­ se hace el cuadrado de tres y se pinta en la caja num
+                        }
+                );
+                // funcion de onClick del boton con id raiz
+                $("#raiz").on("click",
+                        function () {
+                            vnum.val(Math.sqrt(vnum.val())); // hacemos su raiz y se lo volvemos a asignar
+                            //num.val(Math.sqrt(81)); asÃ­ se hace la raiz cuadrada de 81 y se pinta en la caja num
+                        }
+                );
+
+                // funcion de onClick del boton con id inverso
+                $("#inverso").on("click",
+                        function () {
+                            vnum.val(1 / vnum.val()); // hacemos su inverso y se lo volvemos a asignar
+                            //num.val(1/10); asÃ­ se hace el inverso de 10 y se pinta en la caja num
+                        }
+                );
+
+                // funcion de onClick del boton con id ent
+                $("#ent").on("click",
+                        function () {
+                            if (vnum.val() >= 0) {
+                                vnum.val(Math.floor(vnum.val()));
+                            }
+                            else {
+                                vnum.val(-Math.ceil(vnum.val()));
+                            }
+                            ;
+                        }
+                );
+
+
+
+                // funcion de onClick del boton con id pot2, haremos la pontencia n del numero 2
+                $("#pot2").on("click",
+                        function () {
+                            vnum.val(Math.pow(2, +vnum.val()));
+                        }
+                );
+
+                // funcion de onClick del boton con id fact, haremos el factorial del numero
+                $("#fact").on("click",
+                        function () {
+                            var resultado = 1;
+                            for (var i = 2; i <= vnum.val(); i++)
+                            {
+                                resultado = resultado * i;
+                            }
+                            ;
+                            vnum.val(resultado);
+                        }
+                );
+
+                // funcion de onClick de los botones con mÃ¡s de un operando
+                // necesario dar a igual despues.
+                // en las funciones acumularemos el valor del objeto num, 
+                // y guardaremos la operacion
+                // para cuando le demos a igual tenerlo
+
+                // boton con id suma
+                $("#suma").on("click",
+                        function () {
+                            vacu = vnum.val();
+                            oper = "+";
+                        }
+                );
+
+                // boton con id resta
+                $("#resta").on("click",
+                        function () {
+                            vacu = vnum.val();
+                            oper = "-";
+                        }
+                );
+
+
+                // boton con id multiplicacion
+                $("#multi").on("click",
+                        function () {
+                            vacu = vnum.val();
+                            oper = "*";
+                        }
+                );
+
+
+
+                // boton con id divi
+                $("#divi").on("click",
+                        function () {
+                            vacu = vnum.val();
+                            oper = "/";
+                        }
+                );
+
+                // boton con id elev elevado a
+                $("#elev").on("click",
+                        function () {
+                            vacu = vnum.val();
+                            oper = "pot";
+                        }
+                );
+
+                // boton con id sigma sumatorio
+                $("#sigma").on("click",
+                        function () {
+                            //descomponer la cadena a sus valores numericos
+                            //los valores estÃ¡n separados por comas.
+                            var numeros = vnum.val();
+                            var resultado = 0;
+
+                            // haremos split de la cadena, para conseguir un array                            
+                            var arraynumeros = numeros.split(",");
+
+                            // recorreremos el array para ir sumandolo 
+                            // a lo que ya tenia la variable resultado                           
+                            for (i = 0; i < arraynumeros.length; i++) {
+                                resultado += +arraynumeros[i];
+                            }
+                            ;
+
+                            // pintaremos el resultado
+                            vnum.val(resultado);
+
+                        }
+                );
+
+                // boton con id prod producto
+                $("#prod").on("click",
+                        function () {
+                            //descomponer la cadena a sus valores numericos
+                            //los valores estÃ¡n separados por comas.
+                            var numeros = vnum.val();
+                            var resultado = 1;
+
+                            // haremos split de la cadena, para conseguir un array                            
+                            var arraynumeros = numeros.split(",");
+
+                            // recorreremos el array para ir multiplicandolo 
+                            // a lo que ya tenia la variable resultado                           
+                            for (i = 0; i < arraynumeros.length; i++) {
+                                resultado *= +arraynumeros[i];
+                            }
+                            ;
+
+                            // pintaremos el resultado
+                            vnum.val(resultado);
+
+                        }
+                );
+
+
+                $("#igual").on("click", function () {
+                    if (oper === "+") { vnum.val(+vacu + +vnum.val());};
+                    if (oper === "-") { vnum.val(+vacu - +vnum.val());};
+                    if (oper === "*") { vnum.val(+vacu * +vnum.val());};
+                    if (oper === "/") { vnum.val(+vacu / +vnum.val());};
+                    if (oper === "pot") {vnum.val(Math.pow(+vacu, +vnum.val()));};
+                    oper = "";
+                }
+                );
+
+            });
+</script>
+<style type="text/css">
+            .marco {
+                border: 1px red;
+                margin-bottom: 25px;
+                padding: 0px 10px;
+            }
+
+            body{
+                padding: 10px;
+                background-color: black;
+                color: red;
+                font-size: 14px;
+                line-height: 1.4;
+                font-family: 'PT Sans', Georgia, serif;
+            }
+
+            /* fondo del cuadro donde pongo la calculadora */
+            #marcocal {
+                background: blue;
+                background: radial-gradient(circle, #eeeeee 20%, #dddddd);
+            }
+
+            #calculadora {
+                width: 225px;
+                height: auto;
+
+                margin: 100px auto;
+                padding: 20px 20px 10px ;
+
+                background: #96ceb4;
+                background: linear-gradient(#96ceb4, #abd7c3);
+                border-radius: 3px;
+                box-shadow: 0px 4px #78a490, 0px 10px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            button {
+                float: left;
+                position: relative;
+
+                width: 66px;
+                height: 36px;
+
+                background: yellow;
+                border-radius: 5px;
+
+                margin: 0 7px 11px 0;
+
+                color: black;
+                line-height: 36px;
+                text-align: center;
+            }
+
+            button:hover {
+                background: #bdc3c7;
+                box-shadow: 0px 4px #84888b;
+                color: white;
+            }
+
+
+            .top .display {
+                height: 40px;
+                width: 212px;
+                padding: 0 10px;                
+                background-color:#360707; 
+                border-radius: 3px;
+                box-shadow: inset 0px 4px rgba(0, 0, 0, 0.2);
+
+                color:white;
+                font-size: 17px;
+                line-height: 40px;                
+                text-align: right;
+                letter-spacing: 1px;
+            }
+
+            .botones, .top {
+                overflow: hidden;
+                margin-top:10px;
+            }
+
+            #igual {                
+                background: #d77d7d;
+                color: white;  
+                margin-left:73px;                
+            }
+
+
+            #igual:hover {                
+                background: #ce5d5d;
+                color: white;                
+            }
+</style>
+</head>
+<body>
+<div>
+  <h3>Buenos días, bienvenido a la calculadora de Sebastian Vel&aacute;squez Rend&oacute;n</h3>
+</div>
+<div id="marcocal" class="marco">
+  <div id="calculadora">
+     <!-- screen and clear key -->
+    <div class="top">
+      <input class"dislay" type="text" size="12" id="num" onclick="vaciar()">
+    </div>
+    <div class="botones">
+      <button id="cuadrado">
+        x
+        <sup>2</sup>
+      </button>
+      <button id="inverso">
+        1/x
+      </button>
+      <button id="raiz">
+        √
+      </button>
+      <button id="ent">
+        int
+      </button>
+      <button id="pot2">
+        2
+        <sub>n</sub>
+      </button>
+      <button id="fact">
+        n!
+      </button>
+      <button id="suma">
+        +
+      </button>
+      <button id="resta">
+        -
+      </button>
+      <button id="multi">
+        *
+      </button>
+      <button id="divi">
+        /
+      </button>
+      <button id="elev">
+        x^y
+      </button>
+      <button id="sigma">
+        ∑
+      </button>
+      <button id="prod">
+        prodN
+      </button>
+    </div>
+    <div class="top">
+      <button id="igual" class="eval">=</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

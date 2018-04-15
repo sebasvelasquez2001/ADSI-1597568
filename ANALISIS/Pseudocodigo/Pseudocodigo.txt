@@ -1,0 +1,135 @@
+PSEUDOCODIGO
+
+
+
+
+
+
+SEBASTIAN VELASQUEZ RENDON
+FICHA: 1597568
+
+
+
+
+
+
+ANALISIS Y DESARROLLO DE SISTEMAS DE INFORMACION
+NORTE DEL VALLE
+SERVICIO NACIONAL DE APRENDIZAJE SENA
+CARTAGO- VALLE
+   2018
+TABLA DE CONTENIDO
+
+Pág.
+
+1.  algoritmos en seudocódigo                                                                                     
+1.1. Aprobó, desaprobó                                                                           		   
+1.2. Competente, no competente	                                                		   
+1.3. Precio más IVA                                                                                                  
+1.4.	 Number par        
+2. seudocódigo diarios                               	                                                              
+2.1. seudocódigo para ir al baño                                                                                  
+2.2. seudocódigo para fritar un huevo                                                                         
+4. Anexos                                                                                                                 	   
+
+
+
+
+
+
+
+
+1.	
+1.1.	Aprobó, desaprobó.
+Inicio
+Var x: entero;
+Mostrar “introduce la calificación”;
+Leer x;
+Si (x>6){
+Mostrar “aprobado”;
+}sino {
+Mostrar “desaprobado”;
+}
+fin
+/////////////////////////////////////////////////////////////////////////////////////
+
+1.2.	Competente, no competente
+Inicio
+Var x: entero;
+Mostrar “introduce la calificación”,x;
+Leer x;
+Si (x>5){
+Mostrar “es competente”;
+}sino 
+Mostrar “no es competente”;
+Fin
+///////////////////////////////////////////////////////////////////////////////////////////
+
+1.3.	Precio mas IVA
+Inicio
+Var x,p: entero
+Mostrar “introduce el precio del producto”,x;
+Leer x;
+Si (x>200){
+P= x+(x/100)*(16)
+Muestre p;
+}sino{
+Muestre x;
+}
+Fin
+/////////////////////////////////////////////////////////////////////////////////////
+
+1.4.	
+Inicio
+
+Fin
+//////////////////////////////////////////////////////////////////////////////////////
+
+1.5.	Number par
+Star
+var x: whole;
+to show: “enter a number” ,x;
+lear x;
+yes (xmod2=0) so{
+  to show “it's par”;
+}sino{
+  to show “it's odd”;
+}
+end
+
+
+2. seudocódigo diarios 
+2.1. seudocódigo para ir al baño
+I.	abrir los ojos 
+II.	levantar el tronco
+III.	girar el torso hacia la izquierda
+IV.	pararme
+V.	dos pasos a la derecha
+VI.	rotar a la derecha
+VII.	tres pasos a la derecha
+VIII.	rotar hacia la izquierda
+IX.	siete pasos hacia el frente
+X.	rotar a la izquierda
+XI.	tres pasos hasta el inodoro
+2.2.  seudocódigo para fritar un huevo
+I.	me levanto de la silla 
+II.	cuatro pasos hasta la cocina
+III.	rotar hacia la derecha
+IV.	un paso 
+V.	rotar a la izquierda
+VI.	abrir el refrigerador
+VII.	sacar el huevo
+VIII.	 cerrar el refrigerador
+IX.	Rotar a la derecha
+X.	Un paso
+XI.	Sacar el aceite y la cazuela
+XII.	 Media vuelta 
+XIII.	Un paso 
+XIV.	Rotar a la izquierda
+XV.	Encender el fuego
+XVI.	Vaciar el aceite en la cazuela
+XVII.	Romper el huevo
+XVIII.	Y freír
+ANEXO
+
+

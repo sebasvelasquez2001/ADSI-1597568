@@ -1,0 +1,65 @@
+<html lang="es">
+<head><title>Cronómetro Pantallla-Táctil</title><meta charset="UTF-8">
+<script type="text/javascript" src="zepto.min.js" > </script>
+<script type="text/javascript" src="touch.js" > </script>
+
+<script type="text/javascript">
+  $(function(){
+    localStorage.c = (localStorage.c || "0.0");
+
+    var t, cl = $("#crono");
+
+    function incr()     { localStorage.c = +localStorage.c + 0.1; }
+    function mostrar()  { cl.html((+localStorage.c).toFixed(1)); };
+    function arrancar() { t=setInterval(function(){incr(); mostrar()}, 100);};
+    function parar()    { clearInterval(t);  t=undefined; };
+    function cambiar()  { if (!t) arrancar(); else parar(); };
+    function inicializar() { localStorage.c="0.0"; mostrar();};
+
+   // $("#cambiar").on('click', cambiar);
+   // $("#inicializar").on('click', function(){ localStorage.c="0.0"; mostrar();});
+    $('body').on('swipe',  inicializar);
+    $('body').on('tap', cambiar);
+    
+    mostrar();
+  });
+</script>
+<style>
+  body{
+    min-height:100vh;
+    padding:3em;
+    background:cyan;
+    border: 3px dotted rgb(60, 255, 0;
+    box-shadow: -10px -10px 200px rgb(255, 123, 0);
+  }
+  h4 {color: rgb(255, 123, 0); font-size:  40px;}
+  h2 {color: rgb(60, 255, 0); font-size: 50px;}
+  h3, li, p {font-size: 20px;}
+
+  
+</style>
+
+</head>
+<body >
+<h2>Cronómetro por Sebastian Vel&aacute;squez Rend&oacute;n</h2>
+
+<h3><span id="crono"> 0.0 </span> segundos </h3>
+<!--
+<button type="button" id="cambiar"> arrancar/parar </button>
+<button type="button" id="inicializar">  inicializar </button>
+-->
+<div>
+  <h4>Simulador de pantalla táctil en tu Ordenador.</h4>
+  <p>Si no dispones de una pantalla táctil, abre el navegador Google Chrome y sigue estas...Instrucciones:</p>
+  <ol>
+    <li>Muestra las Herramientas de desarrollador pulsando la tecla <b>F12</b>.</li>
+    <li>Activa <b>Toogle device mode</b>(el icono del móvil), puedes utilizar la combinación de teclas <b>Ctrl+Shift+M</b>.</li>
+    <li>Coloca el puntero sobre el contenido de la página y en vez de en forma de flecha se mostrará como un círculo.</li>
+    <li>Haz un clic dentro del área delimitada(punteado y sombreado) y se activará el cronómetro.</li>
+    <li>Vuelve a hacer clic y se detendrá.</li>
+    <li>Si actualizas la página, (tecla <b>F5</b>) o cierras el navegador y vuelves a ver la página, el cronómetro recordará el tiempo contabilizado cuando se cerró.</li>
+    <li>Para Reiniciar el cronómetro, pincha y arrastra dentro del área delimitada, se pondrá a 0.0 segundos.</li>
+  </ol>
+</div>
+</body>
+</html>

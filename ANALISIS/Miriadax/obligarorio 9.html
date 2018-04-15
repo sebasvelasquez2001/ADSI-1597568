@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Geolocalización</title>
+<script type="text/javascript" src="zepto.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="gmaps.js"></script>
+<link rel="stylesheet" type="text/css" href="mypath.css" />
+<script type="text/javascript">
+// Modificar la aplicación con geolocalización en Google Maps, Añadiendo un botón de compactar  las rutas mostradas.
+// Al pulsar el botón se deben eliminar los puntos intermedios de la ruta.
+// La ruta se compactará volviendo a renderizar el mapa limpio y mostrando sobre el solo los puntos inicial y final, juntro con la ruta directa que los une.
+var map, lat, lng;
+var Origen;
+var marker = new google.maps.Marker({
+lat: lat,
+lng: lng,
+map: map,
+}); // Para que aparezca el marcador tienes que crear una variable marcador
+var marcadores = []; // Se tiene que crear un array en el que se guarde el número de marcadores que hay en el mapa
+$(function(){
+function enlazarMarcador(e){
+// muestra ruta entre marcas anteriores y actuales
+map.drawRoute({
+origin: [lat, lng], // origen en coordenadas anteriores
+// destino en coordenadas del click o toque actual
+destination: [e.latLng.lat(), e.latLng.lng()],
+travelMode: 'driving',
+strokeColor: '#476BB2',
+strokeOpacity: 0.6,
+strokeWeight: 5,
+});
+lat = e.latLng.lat(); // guardar coordenadas para la marca siguiente
+lng = e.latLng.lng();
+marcadores.push(marker);
+map.addMarker({ lat: lat, lng: lng}); // pone el marcador final de la ruta en el mapa
+};
+// Esta función es la que localiza las coordenadas de origen en el mapa
+function geolocalizar(){
+GMaps.geolocate({
+success: function(position){
+lat = position.coords.latitude; // guarda coords en lat y lng
+lng = position.coords.longitude;
+map = new GMaps({ // muestra mapa centrado en coords [lat, lng]
+el: '#map',
+lat: lat,
+lng: lng,
+click: enlazarMarcador,
+tap: enlazarMarcador,
+});
+marcadores.push(marker);
+Origen = map.addMarker({ lat: lat, lng: lng}); // marcador en [lat, lng] , guardamos el primer marcador como origen
+},
+error: function(error) { alert('Geolocalización falla: ' + error.message); },
+not_supported: function(){ alert("Su navegador no soporta geolocalización"); },
+});
+};
+geolocalizar();
+});
+function FuncCompactar(){
+alert(" El número de marcadores es : " + marcadores.length );
+alert(" Se compacta la ruta dejando solo los marcadores inicial y final.");
+for ( var i = 0; i < ( marcadores.length - 1 ) ; i++) {
+marcadores.setMap(null);
+alert(" El marcador " + i + " se ha desconectado. ");
+};
+Origen;
+map.addMarker({ lat: lat, lng: lng}); // pone el marcador final de la ruta en el mapa
+marcadores = [];
+};
+</script>
+</head>
+<body>
+<p>Al pulsar "compactar" se borrarán las rutas intermedias <button type="button" id="compactar" onclick="FuncCompactar()" >Compactar </button></p>
+<div id="map"></div>
+</body>
+</html>
