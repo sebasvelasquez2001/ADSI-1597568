@@ -27,6 +27,7 @@ font{
 td{
     size:4; 
     color: white;
+    display: flex;
 }
 .imagenes{
     rowspan:"3";
