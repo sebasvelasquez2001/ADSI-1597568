@@ -1,0 +1,42 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    color: cyan;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    text-align: center;
+    font-size: 50px;
+}
+input{
+    margin: 1rem;
+    border: 0px;
+    background-color: cyan;
+}
+button{
+    background-color: cyan;
+    border-radius: 12px;
+}
+.operation{
+    
+}
+@media only screen and (max-width: 600px){
+    body{
+        background-color:white;
+    display: flex;
+    flex-direction: column;
+    color: red;
+    }
+    input{
+    margin: 1rem;
+    border: 0px;
+    background-color: red;
+}
+button{
+    background-color: red;
+    border-radius: 12px;
+    
+}
+}
