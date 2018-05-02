@@ -5,7 +5,7 @@ namespace MyFirstProject;
 class message1_and_message2 {
 
   public function message1() {
-    echo '1. Hello, My name is: Yerson Andrés Ramírez García.';
+    echo '1. Hello, My name is: Sebastian Velásquez Rendón.';
     echo '<br>';
   }
   public function message2() {
